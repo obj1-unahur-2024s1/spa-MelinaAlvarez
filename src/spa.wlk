@@ -17,30 +17,26 @@ object olivia{
 }
 
 object bruno{
+	var esFeliz = true
+	var tieneSed = false
 	var peso = 55000
 	
-	method esFeliz() = true
-	
-	method tieneSed() = true
-	
-	method peso() = peso
-	
 	method recibirMasajes(){
-		self.esFeliz()
+		esFeliz = true 
 	}
 	
 	method tomarBanioAVapor(){
-		self.tieneSed() 
 		peso = 0.max(peso-500)
+		tieneSed = true
 	}
 	
 	method tomarAgua(){
-		not self.tieneSed()	
+		tieneSed = false
 	}
 
 	method comerFideos(){
-		self.tieneSed()
 		peso = peso + 250
+		tieneSed = true
 	}
 	
 	method correr(){
@@ -48,12 +44,10 @@ object bruno{
 	}
 	
 	method verNoticiero(){
-		not self.esFeliz()
+		esFeliz = false
 	}
 	
-	method estaPerfecto() = self.esFeliz() and
-							not self.tieneSed() and
-							(self.peso()/1000).between(50, 70)
+	method estaPerfecto() = esFeliz and not tieneSed and (peso/1000).between(50, 70)
 							
 	method mediodiaEnCasa(){
 		self.comerFideos()
@@ -65,6 +59,7 @@ object bruno{
 object ramiro{
 	var nivelContractura = 0
 	var estadoDePiel = "grasosa"
+	
 	method recibirMasajes(){
 		nivelContractura = 0.max(nivelContractura-2)
 	}
